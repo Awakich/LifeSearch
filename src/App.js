@@ -1,9 +1,7 @@
-import Header from "../src/components/Header";
-import Advantage from "../src/components/Advantage";
-import Books from "../src/components/Books";
-import Footer from "../src/components/Footer";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Landing from "../src/components/Landing";
+import BookInfo from "./components/BookInfo";
+import { useState, useEffect } from "react";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -20,10 +18,10 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <Advantage />
-      <Books books={books} />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Landing books={books} />} />
+        <Route path="/:id" element={<BookInfo />} />
+      </Routes>
     </div>
   );
 }
